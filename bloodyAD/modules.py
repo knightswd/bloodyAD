@@ -51,7 +51,10 @@ def setAttribute(conn, identity, attribute, value):
         attribute: Name of the attribute 
         value: jSON array (e.g ["john.doe"])
     """
-    value = json.loads(value)
+    try:
+        value = json.loads(value)
+    except ValueError:
+        pass
     setAttr(conn, identity, attribute, value)
 
 
